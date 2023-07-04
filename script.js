@@ -54,12 +54,12 @@
 // alert(`Цвет в CSS ${hexColor}`)
 
 //Number: flats
-let totalFloor = prompt('Введите количество этажей в доме:');
-let kvarFloor = prompt('Введите количество квартир на этаже:');
-let numberKvar = prompt('Введите номер квартиры:');//ввод данных
+// let totalFloor = prompt('Введите количество этажей в доме:');
+// let kvarFloor = prompt('Введите количество квартир на этаже:');
+// let numberKvar = prompt('Введите номер квартиры:');//ввод данных
 
-let kvarEnt = kvarFloor * totalFloor;//вычисляем общее количество квартир в подъезде 
-let numberPadik = Math.ceil(numberKvar / kvarEnt);//вычисляем номер подъезда
-let floorNumber = Math.ceil((numberKvar % kvarEnt) / kvarFloor);//вычисляем номер этажа
+// let kvarEnt = kvarFloor * totalFloor;//вычисляем общее количество квартир в подъезде 
+// let numberPadik = Math.ceil(numberKvar / kvarEnt);//вычисляем номер подъезда
+// let floorNumber = Math.ceil((numberKvar % kvarEnt) / kvarFloor);//вычисляем номер этажа
 
-console.log("Квартира номер " + numberKvar + " находится в " + numberPadik + "-м подъезде на " + floorNumber + "-м этаже.");
+// console.log("Квартира номер " + numberKvar + " находится в " + numberPadik + "-м подъезде на " + floorNumber + "-м этаже.");
