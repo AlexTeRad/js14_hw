@@ -60,6 +60,6 @@
 
 // let kvarEnt = kvarFloor * totalFloor;//вычисляем общее количество квартир в подъезде 
 // let numberPadik = Math.ceil(numberKvar / kvarEnt);//вычисляем номер подъезда
-// let floorNumber = Math.ceil(numberKvar / kvarFloor);//вычисляем номер этажа
+// let floorNumber = Math.ceil((numberKvar % kvarEnt)/ kvarFloor);//вычисляем номер этажа
 
 // console.log("Квартира номер " + numberKvar + " находится в " + numberPadik + "-м подъезде на " + floorNumber + "-м этаже.");
