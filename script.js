@@ -53,3 +53,17 @@
 // let string = prompt('Введите строку:');
 // let multiLineString = string.split('\\n').join('\n');
 // console.log(multiLineString);
+
+//String: youtube
+// const regex = new RegExp(
+//     '/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)/');
+// const input = prompt("Введите текст со ссылкой на YouTube:");
+
+// const match = input.match(regex);
+// if (match) {
+//   const videoId = match[1];
+//   const embedHtml = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+//   document.write(embedHtml);
+// } else {
+//   document.write("Ссылка на YouTube видео не найдена.");
+// }
