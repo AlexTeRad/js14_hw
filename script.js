@@ -111,7 +111,7 @@
 //   "Какая валюта вас интересует?(USD, EUR, GBR):"
 // ).toLocaleUpperCase();
 // let choice = confirm("Вы хотите продать?");
-// let rate;
+// let rate = null;
 // if (vale === "USD") {
 //   rate = choice ? 37.15 : 37.25;
 // } else if (vale === "EUR") {
