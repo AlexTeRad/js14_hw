@@ -1,55 +1,135 @@
-//String: greeting
-// let name = prompt('Какого твое имя?');
-// alert('Привет ' + name + '!');
+//*Number: odd
+// let userInput = prompt('Введите число');
+// let number = Number(userInput);
+// if (isNaN(userInput)) {
+//     alert('Некоректный ввод')
+// } else {
+//     if (number % 2 === 0) {
+//         alert('Введено четное число')
+//     } else {
+//         alert('Введенно нечетное число')
+//     }
+// }
 
-//String: gopni4ek
-// let text = prompt('Введите предложение через запятые');
-// let newtext = text.split(',').join(' блин');//Разбиваем строку на несколько мелких строк по ,
-// alert(newtext);
+//*String: lexics
+// let userInput = prompt('Введите текст');
+// let rightText = userInput.includes('мат');
+// console.log(rightText);
 
-//String: capitalize
-// let str = "cANBerRa"
-// let result = str.slice(0,1).toLocaleUpperCase() + str.slice(1).toLocaleLowerCase();
-// console.log(result); //Canberra
+//*Boolean/Boolean: if
+// let questionOne = confirm('Ты поел?');
+// let questionTwo = confirm('Ты поспал?');
+// if (questionOne === true && questionTwo === false) {
+//     alert('Иди поспи')
+// } else {
+//     if (questionOne === false && questionTwo === true) {
+//         alert('Иди поешь')
+//     } else {
+//         if (questionOne === false && questionTwo === false) {
+//             alert('Плохо')
+//         } else {
+//             alert('Молодец')
+//         }
+//     }
+// }
 
-//String: word count
-// let word = "Lorem ipsum dolor sit amet."
-// let result = word.split(' ').length;
-// console.log(result);
+//*Comparison: sizes
+// let euroSize = prompt('Введите размер одежды по Европейской маркировки:');
+// euroSize = Number(euroSize);
+// if (isNaN(euroSize)) {
+//     alert('Не коректный ввод')
+// } else if (euroSize >= 34 && euroSize < 38) {
+//     worldSize = "XSS";
+// } else if (euroSize >= 38 && euroSize < 40) {
+//     worldSize = "XS";
+// } else if (euroSize >= 40 && euroSize < 42) {
+//     worldSize = "S";
+// } else if (euroSize >= 42 && euroSize < 44) {
+//     worldSize = "M";
+// } else if (euroSize >= 44 && euroSize < 46) {
+//     worldSize = "L";
+// } else if (euroSize >= 46 && euroSize < 48) {
+//     worldSize = "XL";
+// } else if (euroSize >= 48 && euroSize < 50) {
+//     worldSize = "XXL";
+// } else if (euroSize >= 50) {
+//     worldSize = "XXXL";
+// } else {
+//     alert('Размер не найден');
+// } if (worldSize) {
+//     alert('Размер в американской системе: ' + worldSize);
+// }
 
-//String: credentials
-// let mainname = prompt('Введите фамилию');
-// let name = prompt('Введите имя');
-// let fathername = prompt('Введите отчество');
+//*Ternary
+// let sex = confirm('Вы мужчина?') ? 'Вы мужчина' : 'Вы женщина'
+// alert(sex);
 
-// mainname = mainname.trim().slice(0, 1).toLocaleUpperCase()+ mainname.slice(1).toLocaleLowerCase();
-// name = name.trim().slice(0, 1).toLocaleUpperCase()+ name.slice(1).toLocaleLowerCase();
-// fathername = fathername.trim().slice(0, 1).toLocaleUpperCase()+ fathername.slice(1).toLocaleLowerCase();//Делаем магию
+//*Prompt: or
+// let age = prompt("Сколько вам лет?");
+// let year = 2023 - (age || 0);
+// if (!age) {
+//   alert("Вы не ввели возраст!");
+// } else {
+//   alert(year);
+// }
 
-// let fullname = mainname + ' ' + name + ' ' + fathername;
-// console.log(fullname);
+//*Confirm: or this days
+// let enter = confirm("пойдем на шопинг?") ? "тогда пошли" : "бяка";
+// alert(enter);
 
-//String: beer
-// let str = "Було жарко. Василь пив пиво вприкуску з креветками"
-// let result = str.split('пиво').join('чай')
-// console.log(result); //"Було жарко. Василь пив чай уприкуску з креветками"
+//*Confirm: if this days
+// let enter = confirm("Пойдем на шопинг?");
+// if (enter === true) {
+//   alert("Go togda");
+// } else {
+//   alert("Fe");
+// }
 
-//String: no tag
-// let str = "якийсь текст, в якому є один тег <br /> і всяке інше"
-// let tagSt = str.indexOf('<');
-// let tagEnd = str.indexOf('>');
-// let result = str.slice(0, tagSt)+str.slice(tagEnd + 1)
-// console.log(result) //якийсь текст, в якому є один тег і всяке інше
+//*Default: or
+// let surName = prompt("Введите фамилию") || "Иван";
+// let firstName = prompt("Введите имя") || "Иванович";
+// let fatherName = prompt("Введите отчество") || "Иванов";
+// alert(surName + " " + firstName + " " + fatherName);
 
-//String: big tag
-// let str = "якийсь текст у якому є один тег <br /> і всяке інше"
-// let tagStart = str.indexOf("<");
-// let tagEnd = str.indexOf(">");
-// let tag = str.slice(tagStart, tagEnd + 1);
-// let result = str.slice(0, tagStart) + tag.toLocaleUpperCase() + str.slice(tagEnd +1)
-// console.log(result) //якийсь текст, в якому є один тег <BR /> і всяке інше
+//*Default: if
+// let surName = prompt("Введите фамилию");
+// let firstName = prompt("Введите имя");
+// let fatherName = prompt("Введите отчество");
+// if (!surName) {
+//   surName = "Иван";
+// }
+// if (!firstName) {
+//   firstName = "Иванович";
+// }
+// if (!fatherName) {
+//   fatherName = "Иванов";
+// }
+// alert(surName + " " + firstName + " " + fatherName);
 
-//String: new line
-// let string = prompt('Введите строку:');
-// let multiLineString = string.split('\\n').join('\n');
-// console.log(multiLineString);
+//*Currency exchange
+// let vale = prompt(
+//   "Какая валюта вас интересует?(USD, EUR, GBR):"
+// ).toLocaleUpperCase();
+// let choice = confirm("Вы хотите продать?");
+// let rate;
+// if (vale === "USD") {
+//   rate = choice ? 37.15 : 37.25;
+// } else if (vale === "EUR") {
+//   rate = choice ? 40.8 : 40.99;
+// } else if (vale === "GBR") {
+//   rate = choice ? 46.8 : 47.7;
+// } else {
+//   alert("Извините, данная валюта не поддерживается");
+// }
+
+// if (rate) {
+//   let summVale = prompt("Введите сумму на обмен");
+//   let result = choice ? summVale * rate : summVale / rate;
+//   alert(`Результат обмена ${result.toFixed(2)}`);
+// }
+
+//*Scissors // еще не сделанно
+let vale = Number(
+  prompt("Что вы хотите выбросить?(Камень это 1, ножницы это 2, бумаг это 3)")
+);
+let computerChoice = Math.ceil(Math.random() * 3);
