@@ -12,7 +12,7 @@
 // }
 
 //*String: lexics
-// let userInput = prompt('Введите текст');
+// let userInput = prompt('Введите текст но не мат', 'Привет всем!');
 // let rightText = userInput.includes('мат');
 // console.log(rightText);
 
