@@ -157,6 +157,13 @@
 // console.log(second, fourth, fifth);
 
 //*Multiply table rest
+// const arr = Array.from({ length: 5 }, (_, i) =>
+//   Array.from({ length: 5 }, (_, j) => (i + 1) * (j + 1))
+// );
+// const [[...first], [...second], [...third], [...fourth]] = arr;
+// const finalArr = [...first.slice(1), ...second.slice(1), ...third.slice(1), ...fourth.slice(1)].filter(Boolean);
+
+// console.log(finalArr);
 
 //*For Alert
 // const arr = ["John", "Paul", "George", "Ringo"];
