@@ -128,8 +128,22 @@
 //   alert(`Результат обмена ${result.toFixed(2)}`);
 // }
 
-//*Scissors // еще не сделанно
-let vale = Number(
-  prompt("Что вы хотите выбросить?(Камень это 1, ножницы это 2, бумаг это 3)")
-);
-let computerChoice = Math.ceil(Math.random() * 3);
+//*Scissors 
+// let userChoice = prompt(
+//   "Введите свой выбор: 1 - камень, 2 - ножницы, 3 - бумага"
+// );
+// let compChoice = Math.floor(Math.random() * 3) + 1;
+
+// alert("Выбор компьютера: " + compChoice);
+
+// if (userChoice === compChoice) {
+//   alert("Ничья!");
+// } else if (
+//   (userChoice === "1" && compChoice === 2) ||
+//   (userChoice === "2" && compChoice === 3) ||
+//   (userChoice === "3" && compChoice === 1)
+// ) {
+//   alert("Вы победили!");
+// } else {
+//   alert("Компьютер победил!");
+// }
