@@ -1,4 +1,4 @@
-//*Literals
+// *Literals
 // const car = {
 //   brand: 'Porsh',
 //   model: 911,
@@ -8,7 +8,7 @@
 //   engine: 'MDC.JA',
 // };
 
-//*Literals expand
+// *Literals expand
 // const car = {
 //   brand: "Porsche",
 //   model: 911,
@@ -21,7 +21,7 @@
 // car.year = prompt("Введите год выпуска");
 // console.log(car);
 
-//*Literals copy
+// *Literals copy
 // const car = {
 //   brand: "Porsche",
 //   model: 911,
@@ -35,19 +35,158 @@
 // const car2 = { ...car };
 // console.log(car2);
 
-//*Html tree
-//!
+// *Html tree
+// const body = {
+//   tagName: "body",
+//   attrs: {},
+//   children: [
+//     {
+//       tagName: "div",
+//       children: [
+//         {
+//           tagName: "span",
+//           children: ["Enter a data please:"],
+//         },
+//         {
+//           tagName: "br",
+//           children: [],
+//         },
+//         {
+//           tagName: "input",
+//           attrs: {
+//             type: "text",
+//             id: "name",
+//           },
+//           children: [],
+//         },
+//         {
+//           tagName: "input",
+//           attrs: {
+//             type: "text",
+//             id: "surname",
+//           },
+//           children: [],
+//         },
+//       ],
+//     },
+//     {
+//       tagName: "div",
+//       children: [
+//         {
+//           tagName: "button",
+//           attrs: { id: "ok" },
+//           children: ["OK"],
+//         },
+//         {
+//           tagName: "button",
+//           attrs: { id: "cancel" },
+//           children: ["Cancel"],
+//         },
+//       ],
+//     },
+//   ],
+// };
+// let textSecondButton = body.children[1].children[1].children[0].text;
+// let idSecondInput = body.children[0].children[3].attrs.id;
 
-//*Parent
-//!
+// *Parent
+// const body = {
+//   tagName: "body",
+//   attrs: {},
+//   children: [
+//     {
+//       tagName: "div",
+//       attrs: { parent: "body" },
+//       children: [
+//         {
+//           tagName: "span",
+//           attrs: { parent: "div" },
+//           children: ["Enter a data please:"],
+//         },
+//         {
+//           tagName: "br",
+//           attrs: { parent: "div" },
+//           children: [],
+//         },
+//         {
+//           tagName: "input",
+//           attrs: {
+//             type: "text",
+//             id: "name",
+//             parent: "div",
+//           },
+//           children: [],
+//         },
+//         {
+//           tagName: "input",
+//           attrs: {
+//             type: "text",
+//             id: "surname",
+//             parent: "div",
+//           },
+//           children: [],
+//         },
+//       ],
+//     },
+//     {
+//       tagName: "div",
+//       attrs: { parent: "body" },
+//       children: [
+//         {
+//           tagName: "button",
+//           attrs: {
+//             id: "ok",
+//             parent: "div",
+//           },
+//           children: ["OK"],
+//         },
+//         {
+//           tagName: "button",
+//           attrs: {
+//             id: "cancel",
+//             parent: "div",
+//           },
+//           children: ["Cancel"],
+//         },
+//       ],
+//     },
+//   ],
+// };
 
-//*Change OK
-//!
+// *Change OK
+// const okButton = document.getElementById("ok");
+// const newId = prompt("Введите новый id для кнопки:");
+// okButton.setAttribute("id", newId);
 
-//*Destructure
-//!
+// *Destructure
+// const {
+//   children: [
+//     {
+//       children: [
+//         {
+//           children: [ spanText ],
+//         },
+//         {},
+//         {
+//           attrs: { id: secondInputId },
+//         },
+//       ],
+//     },
+//     {
+//       children: [
+//         {},
+//         {
+//           children: [ secondButtonText ],
+//         },
+//       ],
+//     },
+//   ],
+// } = body;
+// console.log(spanText); // Выводит текст в теге span
+// console.log(secondInputId); // Выводит id второго input
+// console.log(secondButtonText); // Выводит текст второй кнопки
 
-//*Destruct array
+// *Destruct array
 // let arr = [1, 2, 3, 4, 5, "a", "b", "c"];
 // let numderChet = arr.filter(
 //   (item) => typeof item === "number" && item % 2 === 0
@@ -56,9 +195,9 @@
 //   (item) => typeof item === "number" && item % 2 === 0
 // );
 // let letters = arr.filter((item) => typeof item === "string");
-//?
+// ?
 
-//*Destruct string
+// *Destruct string
 // let arr = [1, "abc"];
 // let [number, str] = arr;
 // let [s1, s2, s3] = str;
@@ -68,7 +207,7 @@
 // console.log(s2);
 // console.log(s3);
 
-//*Destruct 2
+// *Destruct 2
 // let obj = {
 //   name: "Ivan",
 //   surname: "Petrov",
@@ -78,7 +217,7 @@
 //   children: [name1, name2],
 // } = obj;
 
-//*Destruct 3
+// *Destruct 3
 // let arr = [1, 2, 3, 4, 5, 6, 7, 10];
 // const [a, b] = arr;
 // const { length } = arr;
@@ -87,7 +226,7 @@
 // console.log(b); // 2
 // console.log(length); // 8
 
-//*Copy delete
+// *Copy delete
 // const car = {
 //   brand: "Porsh",
 //   model: 911,
@@ -102,16 +241,143 @@
 // const { [keyRemove]: _, ...newCar } = car;
 // console.log(newCar);
 
-//*Currency real rate
-//!
+// *Currency real rate
+// let baseCurrency = prompt("Введите входящую валюту").toUpperCase();
+// let targetCurrency = prompt("Введите валюту для конвертации").toUpperCase();
+// let amount = prompt("Введите сумму в входной валюте");
 
-//*Currency drop down
-//!
+// fetch(`https://open.er-api.com/v6/latest/${baseCurrency}`).then(res => res.json())
+//       .then(data => {
+//             if (data.base_code === baseCurrency && data.rates.hasOwnProperty(targetCurrency)) {
+//                 let rate = data.rates[targetCurrency];
+//                 let result = amount * rate;
+//                 alert(`Сумма в ${targetCurrency}: ${result}`);
+//             } else {
+//                 alert("Произошла ошибка, проверьте введенные валюты.");
+//             }
+//       })
+//       .catch(err => {
+//             console.error(err);
+//             alert("Произошла ошибка при обработке запроса.");
+//       });
+// ?
 
-//*Currency table
-//!
+// *Currency drop down
+// fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
+//       .then(data => {
+//             let select = document.createElement('select');
+//             for (let currency in data.rates) {
+//                 let option = document.createElement('option');
+//                 option.text = currency;
+//                 option.value = currency;
+//                 select.appendChild(option);
+//             }
+//             document.body.appendChild(select);
+//       })
+//       .catch(err => {
+//             console.error(err);
+//             alert("Произошла ошибка при обработке запроса.");
+//       });
+
+// *Currency table
+// fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
+//     .then(data => {
+//         let rates = data.rates;
+//         let currencies = Object.keys(rates).slice(0, 10); // Ограничиваем количество валют до 10
+
+//         // Начинаем создавать таблицу
+//         let tableHTML = '<table border="1" style="border-collapse:collapse; text-align:center;">';
+
+//         // Заголовок таблицы
+//         tableHTML += '<tr><th></th>';
+//         for (let c1 of currencies) {
+//             tableHTML += `<th>${c1}</th>`;
+//         }
+//         tableHTML += '</tr>';
+
+//         // Строки таблицы
+//         for (let c1 of currencies) {
+//             tableHTML += `<tr><th>${c1}</th>`;
+//             for (let c2 of currencies) {
+//                 let crossRate = rates[c2] / rates[c1]; // Расчет кросс-курса
+//                 tableHTML += `<td>${crossRate.toFixed(2)}</td>`; // Округляем до 2 знаков после запятой
+//             }
+//             tableHTML += '</tr>';
+//         }
+
+//         tableHTML += '</table>';
+
+//         // Добавляем таблицу в HTML документ
+//         document.body.innerHTML += tableHTML;
+//     })
+//     .catch(err => {
+//         console.error(err);
+//         alert("Произошла ошибка при обработке запроса.");
+//     });
 
 //*Form
 //!
+// const car = {
+//   Name: "chevrolet chevelle malibu",
+//   Cylinders: 8,
+//   Displacement: 307,
+//   Horsepower: 130,
+//   Weight_in_lbs: 3504,
+//   Origin: "USA",
+//   in_production: false,
+// };
 
-//*
+//*Table
+//?
+// const persons = [
+//   {
+//     name: "Марія",
+//     fatherName: "Іванівна",
+//     surname: "Іванова",
+//     sex: "female",
+//   },
+//   {
+//     name: "Миколай",
+//     fatherName: "Іванович",
+//     surname: "Іванов",
+//     age: 15,
+//   },
+//   {
+//     name: "Петро",
+//     fatherName: "Іванович",
+//     surname: "Іванов",
+//     married: true,
+//   },
+// ];
+
+// let uniqueKeys = new Set();
+
+// // Находим все уникальные ключи
+// persons.forEach((obj) => {
+//   for (let key in obj) {
+//     uniqueKeys.add(key);
+//   }
+// });
+
+// let tableHTML = '<table border="1">';
+
+// // Создаем строку заголовков
+// tableHTML += "<tr>";
+// uniqueKeys.forEach((key) => {
+//   tableHTML += `<th>${key}</th>`;
+// });
+// tableHTML += "</tr>";
+
+// // Создаем строки данных
+// persons.forEach((obj) => {
+//   tableHTML += "<tr>";
+//   uniqueKeys.forEach((key) => {
+//     tableHTML += `<td>${obj[key] || ""}</td>`; // Проверяем, есть ли ключ в объекте и выводим значение
+//   });
+//   tableHTML += "</tr>";
+// });
+
+// tableHTML += "</table>";
+
+// // Добавляем таблицу в HTML документ
+// document.body.innerHTML = tableHTML;
