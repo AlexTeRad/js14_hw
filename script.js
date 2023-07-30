@@ -106,6 +106,21 @@
 // }
 // alert(surName + " " + firstName + " " + fatherName);
 
+//*Login and password
+// const login = prompt("Введите логин");
+
+// if (login === "admin") {
+//   const password = prompt("Введите пароль");
+
+//   if (password === "qwerty") {
+//     alert("Добро пожаловать!");
+//   } else {
+//     alert("Неверный пароль");
+//   }
+// } else {
+//   alert("Неверный логин");
+// }
+
 //*Currency exchange
 // let vale = prompt(
 //   "Какая валюта вас интересует?(USD, EUR, GBR):"
