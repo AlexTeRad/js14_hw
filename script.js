@@ -316,16 +316,29 @@
 //     });
 
 //*Form
-//!
 // const car = {
-//   Name: "chevrolet chevelle malibu",
-//   Cylinders: 8,
-//   Displacement: 307,
-//   Horsepower: 130,
-//   Weight_in_lbs: 3504,
-//   Origin: "USA",
-//   in_production: false,
+//   brand: 'Porsh',
+//   model: 911,
+//   year: 2018,
+//   generations: 8,
+//   mark: 8,
+//   engine: 'MDC.JA',
+//   horsepower: 300,
+//   origin: "Germany",
+//   in_production: false
 // };
+// let form = document.createElement('form');
+// for (let key in car) {
+//     let label = document.createElement('label');
+//     label.textContent = key;
+//     form.appendChild(label);
+//     let input = document.createElement('input');
+//     input.type = typeof car[key] === 'boolean' ? 'checkbox' : 'text';
+//     input.value = car[key];
+//     form.appendChild(input);
+//     form.appendChild(document.createElement('br'));
+// }
+// document.body.appendChild(form);
 
 //*Table
 //?
