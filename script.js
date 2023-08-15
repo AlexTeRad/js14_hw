@@ -1,383 +1,181 @@
-// *Literals
-// const car = {
-//   brand: 'Porsh',
-//   model: 911,
-//   year: 2018,
-//   generations: 8,
-//   mark: 8,
-//   engine: 'MDC.JA',
+// //*Temperature
+// const temp = (tempC) => (tempC * 9) / 5 + 32;
+
+// //*RGB
+// const hexColor = (r, g, b) =>
+//   "#" + ("000000" + ((r << 16) | (g << 8) | b).toString(16)).slice(-6);
+
+// //*Flats
+// const flats = (totalFloor, kvarFloor, numberKvar) => {
+//   kvarEnt = kvarFloor * totalFloor;
+//   numberPadik = Math.ceil(numberKvar / kvarEnt);
+//   floorNumber = Math.ceil((numberKvar % kvarEnt) / kvarFloor);
+//   return { entrance: numberPadik, floor: floorNumber };
 // };
 
-// *Literals expand
-// const car = {
-//   brand: "Porsche",
-//   model: 911,
-//   year: 2018,
-//   generations: 8,
-//   mark: 992,
-//   engine: "MDC.JA",
-// };
-// car.model = prompt("Введите название модели");
-// car.year = prompt("Введите год выпуска");
-// console.log(car);
-
-// *Literals copy
-// const car = {
-//   brand: "Porsche",
-//   model: 911,
-//   year: 2018,
-//   generations: 8,
-//   mark: 992,
-//   engine: "MDC.JA",
-// };
-// car.owner = prompt("Имя владельца");
-
-// const car2 = { ...car };
-// console.log(car2);
-
-// *Html tree
-// const body = {
-//   tagName: "body",
-//   attrs: {},
-//   children: [
-//     {
-//       tagName: "div",
-//       children: [
-//         {
-//           tagName: "span",
-//           children: ["Enter a data please:"],
-//         },
-//         {
-//           tagName: "br",
-//           children: [],
-//         },
-//         {
-//           tagName: "input",
-//           attrs: {
-//             type: "text",
-//             id: "name",
-//           },
-//           children: [],
-//         },
-//         {
-//           tagName: "input",
-//           attrs: {
-//             type: "text",
-//             id: "surname",
-//           },
-//           children: [],
-//         },
-//       ],
-//     },
-//     {
-//       tagName: "div",
-//       children: [
-//         {
-//           tagName: "button",
-//           attrs: { id: "ok" },
-//           children: ["OK"],
-//         },
-//         {
-//           tagName: "button",
-//           attrs: { id: "cancel" },
-//           children: ["Cancel"],
-//         },
-//       ],
-//     },
-//   ],
-// };
-// let textSecondButton = body.children[1].children[1].children[0].text;
-// let idSecondInput = body.children[0].children[3].attrs.id;
-
-// *Parent
-// const body = {
-//   tagName: "body",
-//   attrs: {},
-//   children: [
-//     {
-//       tagName: "div",
-//       attrs: { parent: "body" },
-//       children: [
-//         {
-//           tagName: "span",
-//           attrs: { parent: "div" },
-//           children: ["Enter a data please:"],
-//         },
-//         {
-//           tagName: "br",
-//           attrs: { parent: "div" },
-//           children: [],
-//         },
-//         {
-//           tagName: "input",
-//           attrs: {
-//             type: "text",
-//             id: "name",
-//             parent: "div",
-//           },
-//           children: [],
-//         },
-//         {
-//           tagName: "input",
-//           attrs: {
-//             type: "text",
-//             id: "surname",
-//             parent: "div",
-//           },
-//           children: [],
-//         },
-//       ],
-//     },
-//     {
-//       tagName: "div",
-//       attrs: { parent: "body" },
-//       children: [
-//         {
-//           tagName: "button",
-//           attrs: {
-//             id: "ok",
-//             parent: "div",
-//           },
-//           children: ["OK"],
-//         },
-//         {
-//           tagName: "button",
-//           attrs: {
-//             id: "cancel",
-//             parent: "div",
-//           },
-//           children: ["Cancel"],
-//         },
-//       ],
-//     },
-//   ],
+//*Credentials
+// const person = () => {
+//    surname = prompt("Введите фамилию");
+//    name = prompt("Введите имя");
+//    fathername = prompt("Введите отчество");
+//    formatName = (name) => {
+//     return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+//   };
+//   const fullName = (surname, name, fathername) => {
+//     return (
+//       formatName(surname) +
+//       " " +
+//       formatName(name) +
+//       " " +
+//       formatName(fathername)
+//     );
+//   };
+//   return {
+//     name: formatName(name),
+//     surname: formatName(surname),
+//     fatherName: formatName(fathername),
+//     fullName: fullName(surname, name, fathername),
+//   };
 // };
 
-// *Change OK
-// const okButton = document.getElementById("ok");
-// const newId = prompt("Введите новый id для кнопки:");
-// okButton.setAttribute("id", newId);
+//*New line
+// const multString = () => {
+//   let string = prompt("Введите строку:");
+//   let result = string.replace(/\\n/g, "\n");
+//   return console.log(result);
+// };
 
-// *Destructure
-// const {
-//   children: [
-//     {
-//       children: [
-//         {
-//           children: [ spanText ],
-//         },
-//         {},
-//         {
-//           attrs: { id: secondInputId },
-//         },
-//       ],
-//     },
-//     {
-//       children: [
-//         {},
-//         {
-//           children: [ secondButtonText ],
-//         },
-//       ],
-//     },
-//   ],
-// } = body;
-// console.log(spanText); // Выводит текст в теге span
-// console.log(secondInputId); // Выводит id второго input
-// console.log(secondButtonText); // Выводит текст второй кнопки
+//*Prompt OR
+// const getAge = () => 2023 - (Number(prompt("Сколько вам лет?")) || 18);
 
-// *Destruct array
-// let arr = [1, 2, 3, 4, 5, "a", "b", "c"];
-// let numderChet = arr.filter(
-//   (item) => typeof item === "number" && item % 2 === 0
+//*Login And Password
+// const logIn = () => {
+//   const login = prompt("Введите логин");
+//   const password = prompt("Введите пароль");
+//   if (login === "admin" && password === "qwerty") {
+//     alert("Добро пожаловать!");
+//   } else {
+//     alert("Неверно");
+//   }
+// };
+
+//*For Table
+// const table = Array.from({ length: 5 }, (_, i) =>
+//   Array.from({ length: 5 }, (_, j) => (i + 1) * (j + 1))
 // );
-// let numberNeChet = arr.filter(
-//   (item) => typeof item === "number" && item % 2 === 0
-// );
-// let letters = arr.filter((item) => typeof item === "string");
-// ?
-
-// *Destruct string
-// let arr = [1, "abc"];
-// let [number, str] = arr;
-// let [s1, s2, s3] = str;
-
-// console.log(number);
-// console.log(s1);
-// console.log(s2);
-// console.log(s3);
-
-// *Destruct 2
-// let obj = {
-//   name: "Ivan",
-//   surname: "Petrov",
-//   children: [{ name: "Maria" }, { name: "Nikolay" }],
+// const tableWind = () => {
+//   document.write(
+//     "<table style='border-collapse: collapse; table-layout: fixed; text-align: center'>"
+//   );
+//   for (const row of table) {
+//     document.write("<tr>");
+//     for (const num of row) {
+//       document.write(
+//         `<td style='border: 1px solid black; width: 50px; text-align: center'>${num}</td>`
+//       );
+//     }
+//     document.write("</tr>");
+//   }
+//   document.write("</table>");
 // };
-// const {
-//   children: [name1, name2],
-// } = obj;
 
-// *Destruct 3
-// let arr = [1, 2, 3, 4, 5, 6, 7, 10];
-// const [a, b] = arr;
-// const { length } = arr;
+//*Filter Lexics
 
-// console.log(a); // 1
-// console.log(b); // 2
-// console.log(length); // 8
-
-// *Copy delete
-// const car = {
-//   brand: "Porsh",
-//   model: 911,
-//   year: 2018,
-//   generations: 8,
-//   mark: 8,
-//   engine: "MDC.JA",
+// const filtLex = () => {
+//   inputWords = prompt("Введите текст").toLocaleLowerCase().split(" ");
+//   badWords = ["бляха", "черт", "зараза", "балабол"];
+//   filterWords = inputWords.filter(
+//     (inputWords) => !badWords.includes(inputWords)
+//   );
+//   outString = filterWords.join(" ");
+//   return outString;
 // };
-// const keyRemove = prompt(
-//   "Введите того чего не хотите видеть(brand, model, year, mark, engine):"
-// );
-// const { [keyRemove]: _, ...newCar } = car;
-// console.log(newCar);
 
-// *Currency real rate
-// let baseCurrency = prompt("Введите входящую валюту").toUpperCase();
-// let targetCurrency = prompt("Введите валюту для конвертации").toUpperCase();
-// let amount = prompt("Введите сумму в входной валюте");
+//*Currency Table
+// const fetchCurrencyData = () => {
+//   fetch("https://open.er-api.com/v6/latest/USD")
+//     .then((res) => res.json())
+//     .then((data) => {
+//       let rates = data.rates;
+//       let currencies = Object.keys(rates).slice(0, 5); // Ограничиваем количество валют до 5
 
-// fetch(`https://open.er-api.com/v6/latest/${baseCurrency}`).then(res => res.json())
-//       .then(data => {
-//             if (data.base_code === baseCurrency && data.rates.hasOwnProperty(targetCurrency)) {
-//                 let rate = data.rates[targetCurrency];
-//                 let result = amount * rate;
-//                 alert(`Сумма в ${targetCurrency}: ${result}`);
-//             } else {
-//                 alert("Произошла ошибка, проверьте введенные валюты.");
-//             }
-//       })
-//       .catch(err => {
-//             console.error(err);
-//             alert("Произошла ошибка при обработке запроса.");
-//       });
-// ?
+//       // Добавляем названия валют в начало каждого ряда
+//       const table = currencies.map((c1) => [
+//         c1,
+//         ...currencies.map((c2) => rates[c2] / rates[c1]),
+//       ]);
 
-// *Currency drop down
-// fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
-//       .then(data => {
-//             let select = document.createElement('select');
-//             for (let currency in data.rates) {
-//                 let option = document.createElement('option');
-//                 option.text = currency;
-//                 option.value = currency;
-//                 select.appendChild(option);
-//             }
-//             document.body.appendChild(select);
-//       })
-//       .catch(err => {
-//             console.error(err);
-//             alert("Произошла ошибка при обработке запроса.");
-//       });
+//       // Добавляем названия валют в начало таблицы
+//       table.unshift(["", ...currencies]);
 
-// *Currency table
-// fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
-//     .then(data => {
-//         let rates = data.rates;
-//         let currencies = Object.keys(rates).slice(0, 10); // Ограничиваем количество валют до 10
-
-//         // Начинаем создавать таблицу
-//         let tableHTML = '<table border="1" style="border-collapse:collapse; text-align:center;">';
-
-//         // Заголовок таблицы
-//         tableHTML += '<tr><th></th>';
-//         for (let c1 of currencies) {
-//             tableHTML += `<th>${c1}</th>`;
-//         }
-//         tableHTML += '</tr>';
-
-//         // Строки таблицы
-//         for (let c1 of currencies) {
-//             tableHTML += `<tr><th>${c1}</th>`;
-//             for (let c2 of currencies) {
-//                 let crossRate = rates[c2] / rates[c1]; // Расчет кросс-курса
-//                 tableHTML += `<td>${crossRate.toFixed(2)}</td>`; // Округляем до 2 знаков после запятой
-//             }
-//             tableHTML += '</tr>';
-//         }
-
-//         tableHTML += '</table>';
-
-//         // Добавляем таблицу в HTML документ
-//         document.body.innerHTML += tableHTML;
+//       tableWind(table);
 //     })
-//     .catch(err => {
-//         console.error(err);
-//         alert("Произошла ошибка при обработке запроса.");
+//     .catch((err) => {
+//       console.error(err);
+//       alert("Произошла ошибка при обработке запроса.");
 //     });
+// };
+
+// const tableWind = (table) => {
+//   document.write(
+//     "<table style='border-collapse: collapse; table-layout: fixed; text-align: center'>"
+//   );
+//   for (const row of table) {
+//     document.write("<tr>");
+//     for (const cell of row) {
+//       document.write(
+//         `<td style='border: 1px solid black; width: 50px; text-align: center'>${
+//           typeof cell === "number" ? cell.toFixed(2) : cell
+//         }</td>`
+//       );
+//     }
+//     document.write("</tr>");
+//   }
+//   document.write("</table>");
+// };
 
 //*Form
-//!
-// const car = {
-//   Name: "chevrolet chevelle malibu",
-//   Cylinders: 8,
-//   Displacement: 307,
-//   Horsepower: 130,
-//   Weight_in_lbs: 3504,
-//   Origin: "USA",
-//   in_production: false,
+// const person = {
+//   name: "John",
+//   age: 30,
+//   occupation: "Engineer",
+//   married: true,
 // };
 
-//*Table
-//?
-// const persons = [
-//   {
-//     name: "Марія",
-//     fatherName: "Іванівна",
-//     surname: "Іванова",
-//     sex: "female",
-//   },
-//   {
-//     name: "Миколай",
-//     fatherName: "Іванович",
-//     surname: "Іванов",
-//     age: 15,
-//   },
-//   {
-//     name: "Петро",
-//     fatherName: "Іванович",
-//     surname: "Іванов",
-//     married: true,
-//   },
+// const personForm = createForm(person);
+// document.body.appendChild(personForm);
+
+// createForm = (obj) => {
+//   let form = document.createElement("form");
+//   for (let key in obj) {
+//     let label = document.createElement("label");
+//     label.textContent = key;
+//     form.appendChild(label);
+//     let input = document.createElement("input");
+//     input.type = typeof obj[key] === "boolean" ? "checkbox" : "text";
+//     input.value = obj[key];
+//     form.appendChild(input);
+//     form.appendChild(document.createElement("br"));
+//   }
+//   return form;
+// }
+
+//*Array of objects sort
+// let persons = [
+//   { name: "Іван", age: 17 },
+//   { name: "Марія", age: 35 },
+//   { name: "Олексій", age: 73 },
+//   { name: "Яків", age: 12 },
 // ];
 
-// let uniqueKeys = new Set();
-
-// // Находим все уникальные ключи
-// persons.forEach((obj) => {
-//   for (let key in obj) {
-//     uniqueKeys.add(key);
-//   }
-// });
-
-// let tableHTML = '<table border="1">';
-
-// // Создаем строку заголовков
-// tableHTML += "<tr>";
-// uniqueKeys.forEach((key) => {
-//   tableHTML += `<th>${key}</th>`;
-// });
-// tableHTML += "</tr>";
-
-// // Создаем строки данных
-// persons.forEach((obj) => {
-//   tableHTML += "<tr>";
-//   uniqueKeys.forEach((key) => {
-//     tableHTML += `<td>${obj[key] || ""}</td>`; // Проверяем, есть ли ключ в объекте и выводим значение
-//   });
-//   tableHTML += "</tr>";
-// });
-
-// tableHTML += "</table>";
-
-// // Добавляем таблицу в HTML документ
-// document.body.innerHTML = tableHTML;
+// dynamicSort = (property, sortOrder) => {
+//   return function (a, b) {
+//     if (sortOrder) {
+//       return a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+//     } else {
+//       return b[property] < a[property] ? -1 : b[property] > a[property] ? 1 : 0;
+//     }
+//   };
+// };
+// persons.sort(dynamicSort("age"));
+// persons.sort(dynamicSort("age", false));
