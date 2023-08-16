@@ -1,16 +1,25 @@
 body {
-    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7; /* базовый цвет фона */
 }
 
 .wrapper {
+    max-height: 300px;
+    height: 100%;
     max-width: 600px;
-    margin: 50px auto;
+    width: 100%;
+    border-radius: 20px; /* округление углов */
+    overflow: hidden; /* чтобы контент слайдера также был округлен */
 }
+
 
 .slider__screen {
     padding: 20px;
     border: 1px solid #eee;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin: 20px 0;
     background-color: #fff;
