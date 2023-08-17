@@ -1,132 +1,186 @@
-$(document).ready(function () {
+// Запускаем функцию, когда DOM полностью загружен
+$(document).ready(() => {
+  // Инициализируем слайдер с определенными настройками
   $(".slider").slick({
-    dots: true,
-    infinite: true,
+    dots: false, // Не показывать точки под слайдером
     speed: 300,
     slidesToShow: 1,
     adaptiveHeight: true,
   });
+  // Устанавливаем максимальную высоту слайдов
+  const maxHeight = Math.max(
+    300,
+    ...$(".slider__screen")
+      .map(function () {
+        return $(this).height();
+      })
+      .get()
+  );
+  $(".slider__screen").height(maxHeight);
 });
 
-let maxHeight = 0;
-
-$(".slider__screen").each(function () {
-  if ($(this).height() > maxHeight) {
-    maxHeight = $(this).height();
+// Текущий активный слой фона
+let activeLayer = 1;
+// Функция изменения фона в зависимости от текущего слайда
+const changeBackground = (currentSlide) => {
+  // Получаем два элемента фона
+  const [layer1, layer2] = [
+    document.getElementById("background-layer-1"),
+    document.getElementById("background-layer-2"),
+  ];
+  // Определение градиента для фона на основе текущего слайда
+  const gradient =
+    [
+      "linear-gradient(to right, #020024, #00d4ff)",
+      "linear-gradient(to right, #FFB6C1, #FF69B4)",
+      "linear-gradient(to right, #22c1c3, #fdbb2d)",
+      "linear-gradient(to right, #eeaeca, #94bbe9)",
+    ][currentSlide] || "";
+  // Переключаем фоны и их прозрачность
+  if (activeLayer === 1) {
+    layer2.style.background = gradient;
+    [layer1.style.opacity, layer2.style.opacity, activeLayer] = [0, 1, 2];
+  } else {
+    layer1.style.background = gradient;
+    [layer1.style.opacity, layer2.style.opacity, activeLayer] = [1, 0, 1];
   }
-});
-
-$(".slider__screen").height(maxHeight);
-
-$(".slider").on("afterChange", function (_, _, currentSlide) {
-  switch (currentSlide) {
-    case 0:
-      $("body").css(
-        "background",
-        "linear-gradient(to right, #020024, #00d4ff)"
-      ); // цвет для первого слайда
-      break;
-    case 1:
-      $("body").css(
-        "background",
-        "linear-gradient(to right, #FFB6C1, #FF69B4)"
-      ); // градиент для второго слайда
-      break;
-    case 2:
-      $("body").css(
-        "background",
-        "linear-gradient(to right, #22c1c3, #fdbb2d)"
-      ); // цвет для третьего слайда
-      break;
-    case 3:
-      $("body").css(
-        "background",
-        "linear-gradient(to right, #eeaeca, #94bbe9)"
-      ); // цвет для четвертого слайда
-      break;
-  }
-});
-
+};
+// Слушатель событий для смены фона при изменении слайда
+$(".slider").on("afterChange", (_, __, currentSlide) =>
+  changeBackground(currentSlide)
+);
+// Переход к следующему слайду
 goToNextSlide = () => {
   $(".slider").slick("slickNext");
 };
-
-saveData = () => {
-  let person = Object.assign(
-    {},
-    {
-      email: $("#email").val(),
-      login: $("#login").val(),
-      birthdate: $("#birthdate").val(),
-      gender: $("#gender").val(),
-      name: $("#name").val(),
-      zodiac: $("#zodiac").val(),
-      weight: parseFloat($("#weight").val()),
-      height: parseFloat($("#height").val()),
-    }
+// Начало работы с формой
+// Функция для сохранения данных
+const saveData = () => {
+  // Поля для сбора данных
+  const fields = [
+    "email",
+    "login",
+    "password",
+    "birthdate",
+    "gender",
+    "name",
+    "zodiac",
+    "weight",
+    "height",
+  ];
+  // Сбор данных из полей в объект person
+  const person = fields.reduce(
+    (obj, field) => ({ ...obj, [field]: $("#" + field).val() }),
+    {}
   );
-
-  if (
-    person.email &&
-    person.login &&
-    person.birthdate &&
-    person.gender &&
-    person.name &&
-    person.zodiac &&
-    person.weight &&
-    person.height
-  ) {
-    people.push(person);
+  // Проверка заполненности всех полей
+  if (Object.values(person).every((value) => value)) {
+    // Если все поля заполнены, то сохраняем данные в локальном хранилище
+    const people = [
+      ...JSON.parse(localStorage.getItem("people") || "[]"),
+      person,
+    ];
     localStorage.setItem("people", JSON.stringify(people));
+    // Отображаем результаты и переходим к следующему слайду
     showResults();
-    goToNextSlide();
+    $(".slider").slick("slickNext");
     alert("Все записано!");
   } else {
+    // Если не все поля заполнены, то выводим сообщение об ошибке
     alert("Пожалуйста, заполните все поля!");
   }
 };
+// Показ результатов при загрузке страницы
+document.addEventListener(
+  "DOMContentLoaded",
+  (showResults = () => {
+    // Получаем данные из локального хранилища
+    const people = JSON.parse(localStorage.getItem("people") || "[]");
+    // Вычисляем результаты
+    let tallest = getTallestPerson(people);
+    let heaviest = getHeaviestPerson(people);
+    let genderCounts = getGenderCounts(people);
+    let uniqueNames = getUniqueNames(people);
+    let totalWeight = getTotalWeight(people);
 
-showResults = () => {
-  console.log(people);
-  let tallest = people[0];
-  let heaviest = people[0];
-  let maleCount = 0;
-  let femaleCount = 0;
-  let otherCount = 0;
-  let totalWeight = 0;
-  let names = [];
+    // Очищаем предыдущие результаты
+    const resultContainer = document.getElementById("result");
+    resultContainer.innerHTML = "";
 
+    // Отображаем результаты на странице
+    appendInfoElement(
+      `Самый высокий: ${tallest.name}, рост: ${tallest.height} см`
+    );
+    appendInfoElement(
+      `Самый толстый: ${heaviest.name}, вес: ${heaviest.weight} кг`
+    );
+    appendInfoElement(
+      `Мальчиков: ${genderCounts.male}, Девочек: ${genderCounts.female}, Других: ${genderCounts.other}`
+    );
+    appendInfoElement(`Совпадение по имени: ${uniqueNames.join(", ")}`);
+    appendInfoElement(`Общий вес ${totalWeight} кг`);
+  })
+);
+// Создание элемента для отображения информации
+const createInfoElement = (text) => {
+  const infoElement = document.createElement("div");
+  infoElement.textContent = text;
+  infoElement.classList.add("result__div");
+  return infoElement;
+};
+// Добавление элемента с информацией в результат
+const appendInfoElement = (text) => {
+  const resultContainer = document.getElementById("result");
+  const infoElement = createInfoElement(text);
+  resultContainer.appendChild(infoElement);
+};
+// Функции для обработки данных
+
+// Рост
+const getTallestPerson = (people) => {
+  return people.reduce((tallest, person) =>
+    person.height > tallest.height ? person : tallest
+  );
+};
+
+// Вес
+const getHeaviestPerson = (people) => {
+  return people.reduce((heaviest, person) =>
+    person.weight > heaviest.weight ? person : heaviest
+  );
+};
+
+// Пол
+const getGenderCounts = (people) => {
+  const genderOptions = ["мужской", "женский", "другой"];
+  let genderCounts = { male: 0, female: 0, other: 0 };
   people.forEach((person) => {
-    if (person.height > tallest.height) tallest = person;
-    if (person.weight > heaviest.weight) heaviest = person;
-    if (!names.includes(person.name)) names.push(person.name);
-    totalWeight += person.weight;
-
     switch (person.gender) {
-      case "мужской":
-        maleCount++;
+      case genderOptions[0]:
+        genderCounts.male++;
         break;
-      case "женский":
-        femaleCount++;
+      case genderOptions[1]:
+        genderCounts.female++;
         break;
-      case "другой":
-        otherCount++;
+      case genderOptions[2]:
+        genderCounts.other++;
         break;
     }
   });
-
-  const uniqueNames = people
-    .map((person) => person.name)
-    .filter((name, i, a) => a.indexOf(name) === i && a.lastIndexOf(name) !== i);
-  const resultHtml = `
-      Самый высокий: ${tallest.name}, рост: ${tallest.height} см
-      Самый толстый: ${heaviest.name}, вес: ${heaviest.weight} кг
-      Мальчиков: ${maleCount}, Девочек: ${femaleCount}, Других: ${otherCount}
-      Совпадения по имени: ${uniqueNames.join(", ")}
-      Общий вес: ${totalWeight} кг
-    `;
-  console.log("Result HTML:", resultHtml);
-  $("#result").html(resultHtml);
+  return genderCounts;
 };
 
-let people = JSON.parse(localStorage.getItem("people")) || []; // Получаем людей из localStorage или используем пустой массив
+// Общий вес
+const getTotalWeight = (people) => {
+  return people.reduce((totalWeight, person) => totalWeight + person.weight, 0);
+};
+
+// Уникальность имени
+const getUniqueNames = (people) => {
+  return people
+    .map((person) => person.name)
+    .filter((name, i, a) => a.indexOf(name) === i && a.lastIndexOf(name) !== i);
+};
+
+// Получаем список людей из локального хранилища или пустой массив, если данных нет
+let people = JSON.parse(localStorage.getItem("people")) || [];
