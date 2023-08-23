@@ -138,8 +138,9 @@ const appendInfoElement = (text) => {
 
 // Рост
 const getTallestPerson = (people) => {
-  return people.reduce((tallest, person) => //tallest акумуляторное значение а person представляет текущий элемент массива
-    person.height > tallest.height ? person : tallest // здесь мы сравниваем самого высокого человека на текущий моммент и поступивщего 
+  return people.reduce(
+    //tallest акумуляторное значение а person представляет текущий элемент массива
+    (tallest, person) => (person.height > tallest.height ? person : tallest) // здесь мы сравниваем самого высокого человека на текущий моммент и поступивщего
   );
 };
 // Вес
